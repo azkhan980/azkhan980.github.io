@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azeem Ahmed Khan | Data Scientist & PhD Researcher</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            950: '#070a12',
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                        },
+                        cyanAccent: '#0ea5e9',
+                        violetAccent: '#8b5cf6',
+                        emeraldAccent: '#10b981',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #070a12;
+            color: #f8fafc;
+        }
+
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.45);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(14, 165, 233, 0.35);
+            box-shadow: 0 12px 35px -10px rgba(14, 165, 233, 0.2);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070a12;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0ea5e9;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-cyanAccent selection:text-navy-950">
+
+    <!-- NAVIGATION BAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <a href="#home" class="flex items-center gap-3 group">
+                    <span class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyanAccent to-violetAccent flex items-center justify-center text-navy-950 font-black text-lg shadow-lg shadow-cyanAccent/20 group-hover:scale-105 transition-transform duration-300">
+                        AK
+                    </span>
+                    <div class="flex flex-col">
+                        <span class="text-base font-bold tracking-tight text-white group-hover:text-cyanAccent transition-colors">
+                            Azeem Ahmed Khan
+                        </span>
+                        <span class="text-xs text-slate-400 font-mono">Data Scientist & PhD Researcher</span>
+                    </div>
+                </a>
+
+                <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium">
+                    <a href="#about" class="text-slate-300 hover:text-cyanAccent transition-colors">About</a>
+                    <a href="#phd-focus" class="text-slate-300 hover:text-cyanAccent transition-colors">PhD Proposal</a>
+                    <a href="#education" class="text-slate-300 hover:text-cyanAccent transition-colors">Education</a>
+                    <a href="#projects" class="text-slate-300 hover:text-cyanAccent transition-colors">Research & Projects</a>
+                    <a href="#experience" class="text-slate-300 hover:text-cyanAccent transition-colors">Experience</a>
+                    <a href="#skills" class="text-slate-300 hover:text-cyanAccent transition-colors">Skills</a>
+                    <a href="#achievements" class="text-slate-300 hover:text-cyanAccent transition-colors">Certifications</a>
+                    <a href="#contact" class="text-slate-300 hover:text-cyanAccent transition-colors">Contact</a>
+                </nav>
+
+                <div class="flex items-center gap-4">
+                    <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-gradient-to-r from-cyanAccent to-violetAccent text-white hover:opacity-90 transition-all shadow-lg shadow-cyanAccent/20">
+                        <i class="fa-solid fa-microscope"></i>
+                        PhD Inquiries
+                    </a>
+
+                    <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-navy-800 focus:outline-none" aria-label="Toggle Navigation Menu">
+                        <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-800 bg-navy-950/95 backdrop-blur-xl px-4 pt-4 pb-6 space-y-3">
+            <a href="#about" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-navy-800">About</a>
+            <a href="#phd-focus" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-navy-800">PhD Research Statement</a>
+            <a href="#education" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-navy-800">Education</a>
+            <a href="#projects" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-navy-800">Projects & Dissertation</a>
+            <a href="#experience" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-navy-800">Experience</a>
+            <a href="#skills" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-navy-800">Skills & Stack</a>
+            <a href="#achievements" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-navy-800">Certifications & Honors</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-navy-800">Contact</a>
+        </div>
+    </header>
+
+    <main class="pt-20">
+
+        <!-- HERO SECTION WITH PROMINENT PICTURE DISPLAY -->
+        <section id="home" class="min-h-[calc(100vh-5rem)] flex items-center justify-center relative overflow-hidden py-16">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyanAccent/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-10 right-1/4 w-96 h-96 bg-violetAccent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Hero Info Text -->
+                    <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                        
+                        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-cyanAccent/30 bg-cyanAccent/10 text-cyanAccent text-xs font-semibold uppercase tracking-wider">
+                            <span class="w-2 h-2 rounded-full bg-emeraldAccent animate-pulse"></span>
+                            Seeking Fully Funded PhD Positions (ML / AI / Cybersecurity / XAI)
+                        </div>
+
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+                            Azeem Ahmed <span class="bg-gradient-to-r from-cyanAccent via-sky-300 to-violetAccent bg-clip-text text-transparent">Khan</span>
+                        </h1>
+
+                        <p class="text-xl sm:text-2xl font-semibold text-slate-200">
+                            Data Scientist & PhD Aspirant | Machine Learning, Cybersecurity, XAI & Anomaly Detection
+                        </p>
+
+                        <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                            Currently completing an MSc in Data Science at the <strong class="text-slate-200">University of East London</strong>. Dedicated to advancing research across <span class="text-cyanAccent font-medium">Machine Learning</span>, <span class="text-violetAccent font-medium">Explainable AI (XAI)</span>, <span class="text-emeraldAccent font-medium">Cybersecurity</span>, and <span class="text-amber-400 font-medium">Anomaly Detection</span>.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-cyanAccent to-violetAccent text-white font-bold hover:opacity-95 transition-all shadow-lg shadow-cyanAccent/25 flex items-center justify-center gap-2 group">
+                                Contact for PhD Opportunities
+                                <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                            <a href="#phd-focus" class="w-full sm:w-auto px-8 py-3.5 rounded-xl border border-slate-700 bg-navy-900/80 hover:bg-navy-800 text-slate-200 font-semibold transition-all text-center">
+                                View Research Statement
+                            </a>
+                        </div>
+
+                        <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-400 font-mono">
+                            <span class="flex items-center gap-2">
+                                <i class="fa-solid fa-location-dot text-cyanAccent"></i> Lichfield City, UK & Pakistan
+                            </span>
+                            <span class="flex items-center gap-2">
+                                <i class="fa-solid fa-envelope text-violetAccent"></i> azkhan980@gmail.com
+                            </span>
+                            <span class="flex items-center gap-2">
+                                <i class="fa-solid fa-phone text-emeraldAccent"></i> +1 346 593 2552
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Profile Headshot Column -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative group">
+                            <!-- Outer Ambient Glow Frame -->
+                            <div class="absolute -inset-2 rounded-[2.5rem] bg-gradient-to-tr from-cyanAccent via-violetAccent to-emeraldAccent opacity-60 group-hover:opacity-90 blur-xl transition duration-500"></div>
+
+                            <!-- Picture Container with Fallbacks -->
+                            <div class="relative rounded-3xl overflow-hidden border-2 border-cyanAccent/40 bg-navy-900 w-72 h-96 sm:w-80 sm:h-[27rem] shadow-2xl flex items-center justify-center">
+                                <img src="WhatsApp Image 2026-11-26 at 10.48.32 AM_2.jpeg" 
+                                     alt="Azeem Ahmed Khan Headshot" 
+                                     class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                                     onerror="this.onerror=null; this.src='WhatsApp Image 2026-11-26 at 10.48.32 AM.jpeg'; this.onerror=function(){this.src='https://placehold.co/400x520/0f172a/0ea5e9?text=Azeem+Ahmed+Khan';};">
+
+                                <div class="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-transparent to-transparent"></div>
+
+                                <div class="absolute bottom-4 left-4 right-4 p-3.5 rounded-2xl bg-navy-950/90 border border-slate-700/80 backdrop-blur-md flex items-center justify-between">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyanAccent to-violetAccent text-white flex items-center justify-center text-sm font-bold shadow-md">
+                                            <i class="fa-solid fa-microchip"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs font-bold text-white">MSc Data Science</p>
+                                            <p class="text-[10px] text-slate-400">Merit (67.5%) • UEL UK</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-[10px] font-mono px-2 py-1 rounded bg-slate-800 text-emeraldAccent border border-emeraldAccent/30">PhD Applicant</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT ME SECTION -->
+        <section id="about" class="py-20 bg-navy-900/40 border-t border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-2">
+                    <h2 class="text-xs font-bold text-cyanAccent uppercase tracking-widest">About Azeem</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Data Scientist & Aspiring Researcher</p>
+                    <div class="w-12 h-1 bg-cyanAccent mx-auto rounded-full mt-2"></div>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    <!-- About Profile Image Card -->
+                    <div class="lg:col-span-4 flex justify-center">
+                        <div class="p-4 rounded-3xl glass-card border border-slate-700/80 shadow-xl space-y-4 text-center w-full max-w-sm">
+                            <div class="w-36 h-36 mx-auto rounded-full overflow-hidden border-2 border-cyanAccent p-1 bg-navy-900">
+                                <img src="WhatsApp Image 2026-11-26 at 10.48.32 AM_2.jpeg" 
+                                     alt="Azeem Ahmed Khan Avatar" 
+                                     class="w-full h-full object-cover rounded-full"
+                                     onerror="this.onerror=null; this.src='WhatsApp Image 2026-11-26 at 10.48.32 AM.jpeg'; this.onerror=function(){this.src='https://placehold.co/200x200/0f172a/0ea5e9?text=Azeem';};">
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Azeem Ahmed Khan</h3>
+                                <p class="text-xs text-slate-400 font-mono">azkhan980@gmail.com</p>
+                            </div>
+                            <div class="flex items-center justify-center gap-2 text-xs font-mono text-cyanAccent bg-navy-950 p-2 rounded-xl">
+                                <i class="fa-solid fa-graduation-cap"></i> MSc Merit | UEL London
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- About Narrative -->
+                    <div class="lg:col-span-8 space-y-6 text-slate-300 text-base leading-relaxed">
+                        <p>
+                            I am a <strong class="text-white">Data Scientist and aspiring researcher</strong> currently completing my Master of Science in Data Science at the <span class="text-cyanAccent font-semibold">University of East London</span>. My research focuses on applying machine learning to real-world financial datasets, developing predictive models with explainable AI (XAI) techniques.
+                        </p>
+                        <p>
+                            Alongside my academic commitments, I serve as a <strong class="text-white">Data Analyst at Mansha Brothers</strong>, transforming complex datasets into actionable business insights. My background spans data engineering pipelines, predictive behavioral analysis, and enterprise BI dashboard creation across international remote and on-site roles.
+                        </p>
+                        <p class="p-4 rounded-2xl bg-navy-950/80 border border-cyanAccent/30 text-slate-200">
+                            <i class="fa-solid fa-quote-left text-cyanAccent mr-2"></i>
+                            <em>"I am actively seeking a <strong>fully funded PhD position</strong> where I can contribute to fundamental and applied research in Machine Learning, Data Mining, Explainable AI, and Anomaly Detection to build trustworthy, transparent AI solutions for critical real-world applications."</em>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DOCTORAL RESEARCH STATEMENT SECTION -->
+        <section id="phd-focus" class="py-20 bg-navy-900/60 border-y border-slate-800/80 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-2">
+                    <h2 class="text-xs font-bold text-cyanAccent uppercase tracking-widest">Doctoral Research Target</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white">PhD Research Areas & Focus</p>
+                    <div class="w-12 h-1 bg-cyanAccent mx-auto rounded-full mt-2"></div>
+                </div>
+
+                <div class="p-8 sm:p-10 rounded-3xl glass-card border border-cyanAccent/30 shadow-2xl space-y-8 mb-12">
+                    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-slate-800 pb-6">
+                        <div>
+                            <span class="px-3 py-1 rounded-md bg-cyanAccent/20 text-cyanAccent text-xs font-mono font-bold">
+                                <i class="fa-solid fa-graduation-cap"></i> Doctoral Research Proposal Focus
+                            </span>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-3">
+                                Transparent, Trustworthy, and Robust AI Systems
+                            </h3>
+                        </div>
+                        <a href="#contact" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyanAccent to-violetAccent text-white text-xs font-bold hover:opacity-90 transition-all text-center">
+                            Propose PhD Position / Project
+                        </a>
+                    </div>
+
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                        My primary objective is to secure a <strong class="text-white">fully funded PhD opportunity</strong> focusing on machine learning algorithms that maintain high performance under complex, noisy environments. My MSc dissertation identified <span class="text-cyanAccent font-semibold">instance-dependent label noise</span> in financial data as a key research gap, forming the baseline of my proposed doctoral research.
+                    </p>
+
+                    <!-- Core Doctoral Domains Grid -->
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
+                        
+                        <div class="p-6 rounded-2xl bg-navy-950/70 border border-slate-800 space-y-3">
+                            <div class="w-10 h-10 rounded-xl bg-cyanAccent/10 text-cyanAccent flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-eye"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">Explainable AI (XAI)</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Implementing SHAP, LIME, and feature attribution techniques to explain complex machine learning decisions.
+                            </p>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-navy-950/70 border border-slate-800 space-y-3">
+                            <div class="w-10 h-10 rounded-xl bg-violetAccent/10 text-violetAccent flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-shield-cat"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">Cybersecurity & Trust</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Building intrusion detection models, adversarial defense mechanisms, and secure machine learning pipelines.
+                            </p>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-navy-950/70 border border-slate-800 space-y-3">
+                            <div class="w-10 h-10 rounded-xl bg-emeraldAccent/10 text-emeraldAccent flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">Anomaly & Outlier Detection</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Identifying rare financial fraud events, imbalanced class handling (SMOTE), and instance-dependent label noise.
+                            </p>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-navy-950/70 border border-slate-800 space-y-3">
+                            <div class="w-10 h-10 rounded-xl bg-amber-400/10 text-amber-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-database"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">Data Mining & Knowledge</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Pattern extraction, feature selection using GridSearchCV and cross-validation across high-dimensional datasets.
+                            </p>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-navy-950/70 border border-slate-800 space-y-3">
+                            <div class="w-10 h-10 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">Financial Data Analytics</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Behavioral customer modeling, credit risk evaluation, and churn forecasting using XGBoost, SVM, and Neural Networks.
+                            </p>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-navy-950/70 border border-slate-800 space-y-3">
+                            <div class="w-10 h-10 rounded-xl bg-sky-400/10 text-sky-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-microchip"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">Predictive Analytics</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Designing scalable algorithms (Scikit-learn, TensorFlow) that translate raw data into dependable automated choices.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- EDUCATION SECTION -->
+        <section id="education" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-2">
+                    <h2 class="text-xs font-bold text-cyanAccent uppercase tracking-widest">Academic Credentials</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Education</p>
+                    <div class="w-12 h-1 bg-cyanAccent mx-auto rounded-full mt-2"></div>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8">
+                    
+                    <!-- Degree 1 -->
+                    <div class="p-8 rounded-3xl glass-card space-y-6 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-cyanAccent/10 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+                        
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <span class="px-3 py-1 rounded-full bg-cyanAccent/10 text-cyanAccent text-xs font-mono font-bold">Apr 2025 - Nov 2026</span>
+                                <h3 class="text-2xl font-extrabold text-white mt-3">MSc Data Science</h3>
+                                <p class="text-base font-semibold text-slate-300">University of East London | London, UK</p>
+                            </div>
+                            <span class="px-3 py-1.5 rounded-xl bg-emeraldAccent/10 border border-emeraldAccent/30 text-emeraldAccent text-sm font-bold">
+                                Merit (67.5%)
+                            </span>
+                        </div>
+
+                        <div class="space-y-3 border-t border-slate-800 pt-4">
+                            <p class="text-sm font-bold text-cyanAccent">Key Modules & Dissertation:</p>
+                            <p class="text-sm text-slate-300 leading-relaxed">
+                                <strong>Dissertation:</strong> <em>Predicting Customer Churn in the Banking Sector Using Machine Learning & Explainable AI Techniques</em>.
+                            </p>
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-2.5 py-1 rounded-md bg-navy-800 text-xs font-mono text-slate-300">Predictive Analytics</span>
+                                <span class="px-2.5 py-1 rounded-md bg-navy-800 text-xs font-mono text-slate-300">Machine Learning</span>
+                                <span class="px-2.5 py-1 rounded-md bg-navy-800 text-xs font-mono text-slate-300">Spatial Data Analysis</span>
+                                <span class="px-2.5 py-1 rounded-md bg-navy-800 text-xs font-mono text-slate-300">Quantitative Methods</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Degree 2 -->
+                    <div class="p-8 rounded-3xl glass-card space-y-6 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-violetAccent/10 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+                        
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <span class="px-3 py-1 rounded-full bg-violetAccent/10 text-violetAccent text-xs font-mono font-bold">2021 - 2023</span>
+                                <h3 class="text-2xl font-extrabold text-white mt-3">Bachelor of Business Administration</h3>
+                                <p class="text-base font-semibold text-slate-300">Qualifi Ltd & Chestnut Education | London, UK</p>
+                            </div>
+                            <span class="px-3 py-1.5 rounded-xl bg-cyanAccent/10 border border-cyanAccent/30 text-cyanAccent text-sm font-bold">
+                                Distinction (83.10%)
+                            </span>
+                        </div>
+
+                        <div class="space-y-3 border-t border-slate-800 pt-4">
+                            <p class="text-sm font-bold text-violetAccent">Core Focus:</p>
+                            <p class="text-sm text-slate-300 leading-relaxed">
+                                Level 6 qualification centered on Business Analytics, Data-Driven Decision Making, and Strategic Management.
+                            </p>
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-2.5 py-1 rounded-md bg-navy-800 text-xs font-mono text-slate-300">Business Analytics</span>
+                                <span class="px-2.5 py-1 rounded-md bg-navy-800 text-xs font-mono text-slate-300">Strategic Data Management</span>
+                                <span class="px-2.5 py-1 rounded-md bg-navy-800 text-xs font-mono text-slate-300">Decision Modeling</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- RESEARCH & PROJECTS SECTION -->
+        <section id="projects" class="py-20 bg-navy-900/40 border-y border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-2">
+                    <h2 class="text-xs font-bold text-cyanAccent uppercase tracking-widest">Dissertation & Projects</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Featured Research Projects</p>
+                    <div class="w-12 h-1 bg-cyanAccent mx-auto rounded-full mt-2"></div>
+                </div>
+
+                <!-- MSc Dissertation Card -->
+                <div class="p-8 sm:p-10 rounded-3xl glass-card border border-cyanAccent/30 shadow-2xl space-y-8 relative overflow-hidden mb-12">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyanAccent/20 text-cyanAccent text-xs font-mono font-bold">
+                        <i class="fa-solid fa-star"></i> MSc Dissertation Research Project
+                    </div>
+
+                    <div class="grid lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-8 space-y-4">
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-white">
+                                Predicting Customer Churn in Banking Using ML & Explainable AI (SHAP)
+                            </h3>
+                            <p class="text-slate-300 text-base leading-relaxed">
+                                Evaluated five supervised machine learning algorithms (Random Forest, XGBoost, SVM, Neural Networks, and Logistic Regression) on real financial banking datasets. Applied <strong class="text-cyanAccent">SMOTE</strong> to handle severe class imbalance and implemented <strong class="text-violetAccent">SHAP interpretability</strong> to identify key behavioral churn drivers. Identified instance-dependent label noise as a baseline for future doctoral research.
+                            </p>
+                            
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-3 py-1 rounded-lg bg-navy-900 border border-slate-700 text-xs font-mono text-cyanAccent">Python</span>
+                                <span class="px-3 py-1 rounded-lg bg-navy-900 border border-slate-700 text-xs font-mono text-cyanAccent">XGBoost</span>
+                                <span class="px-3 py-1 rounded-lg bg-navy-900 border border-slate-700 text-xs font-mono text-cyanAccent">Random Forest</span>
+                                <span class="px-3 py-1 rounded-lg bg-navy-900 border border-slate-700 text-xs font-mono text-cyanAccent">SHAP (XAI)</span>
+                                <span class="px-3 py-1 rounded-lg bg-navy-900 border border-slate-700 text-xs font-mono text-cyanAccent">SMOTE</span>
+                                <span class="px-3 py-1 rounded-lg bg-navy-900 border border-slate-700 text-xs font-mono text-cyanAccent">GridSearchCV</span>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-4 p-6 rounded-2xl bg-navy-950/80 border border-slate-800 space-y-4 font-mono text-xs">
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                                <span class="text-slate-400">Class Imbalance:</span>
+                                <span class="text-emeraldAccent font-bold">SMOTE Applied</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                                <span class="text-slate-400">XAI Framework:</span>
+                                <span class="text-cyanAccent font-bold">SHAP Values</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                                <span class="text-slate-400">Best Algorithms:</span>
+                                <span class="text-violetAccent font-bold">XGBoost / Random Forest</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-400">Research Focus:</span>
+                                <span class="text-white font-bold">Label Noise Mitigation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <div class="p-6 rounded-2xl glass-card space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="w-10 h-10 rounded-xl bg-violetAccent/10 text-violetAccent flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-chart-pie"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">Sales & Operational Analytics Dashboards</h4>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                Enterprise data extraction and dashboard reporting using Power BI, Tableau, SQL, and Python for Mansha Brothers.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800">
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-[11px] font-mono text-slate-300">Power BI</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-[11px] font-mono text-slate-300">Tableau</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-[11px] font-mono text-slate-300">SQL</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="w-10 h-10 rounded-xl bg-emeraldAccent/10 text-emeraldAccent flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-bullhorn"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">Data-Driven Marketing Analytics Campaign</h4>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                Award-winning analytical marketing campaign for Denning International Foundation (1st Place Ad-Wars Winner).
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800">
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-[11px] font-mono text-slate-300">Analytics</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-[11px] font-mono text-slate-300">Python</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="w-10 h-10 rounded-xl bg-cyanAccent/10 text-cyanAccent flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-network-wired"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">US Digital Datasets Pipeline</h4>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                Automated data extraction & cleaning scripts for PhoenixiTek (US Remote) maintaining client dataset integrity.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800">
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-[11px] font-mono text-slate-300">Python</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-[11px] font-mono text-slate-300">Pandas</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-[11px] font-mono text-slate-300">SQL</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- WORK EXPERIENCE SECTION -->
+        <section id="experience" class="py-20">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-2">
+                    <h2 class="text-xs font-bold text-cyanAccent uppercase tracking-widest">Work Experience</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Professional History</p>
+                    <div class="w-12 h-1 bg-cyanAccent mx-auto rounded-full mt-2"></div>
+                </div>
+
+                <div class="relative border-l-2 border-slate-800 ml-4 md:ml-36 space-y-12">
+                    
+                    <div class="relative pl-8 md:pl-10 group">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-navy-950 border-2 border-cyanAccent group-hover:scale-125 transition-transform"></div>
+                        <div class="md:absolute md:-left-40 md:top-1 text-xs font-mono font-bold text-cyanAccent mb-2 md:mb-0">
+                            Jan 2026 - Present
+                        </div>
+
+                        <div class="p-6 rounded-2xl glass-card space-y-3">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                <h3 class="text-xl font-bold text-white">Data Analyst</h3>
+                                <span class="text-sm font-semibold text-slate-400">Mansha Brothers | Karachi, Pakistan</span>
+                            </div>
+                            <ul class="space-y-2 text-slate-300 text-sm list-disc list-inside leading-relaxed">
+                                <li>Build and maintain data pipelines for sales analytics, operational performance, and executive reporting.</li>
+                                <li>Apply Python and SQL for data extraction, transformation, and analysis to support management decisions.</li>
+                                <li>Develop dashboards using Power BI and Tableau to communicate key findings to non-technical stakeholders.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 md:pl-10 group">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-navy-950 border-2 border-violetAccent group-hover:scale-125 transition-transform"></div>
+                        <div class="md:absolute md:-left-40 md:top-1 text-xs font-mono font-bold text-violetAccent mb-2 md:mb-0">
+                            Sep 2024 - Feb 2025
+                        </div>
+
+                        <div class="p-6 rounded-2xl glass-card space-y-3">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                <h3 class="text-xl font-bold text-white">IT Intern</h3>
+                                <span class="text-sm font-semibold text-slate-400">Mansha Brothers | Karachi, Pakistan</span>
+                            </div>
+                            <ul class="space-y-2 text-slate-300 text-sm list-disc list-inside leading-relaxed">
+                                <li>Coordinated data workflows across IT, marketing, and operations departments.</li>
+                                <li>Supported digital marketing analytics and campaign performance tracking.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 md:pl-10 group">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-navy-950 border-2 border-emeraldAccent group-hover:scale-125 transition-transform"></div>
+                        <div class="md:absolute md:-left-40 md:top-1 text-xs font-mono font-bold text-emeraldAccent mb-2 md:mb-0">
+                            Aug 2022 - Aug 2023
+                        </div>
+
+                        <div class="p-6 rounded-2xl glass-card space-y-3">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                <h3 class="text-xl font-bold text-white">Data Management & Marketing Assistant</h3>
+                                <span class="text-sm font-semibold text-slate-400">PhoenixiTek | United States (Remote)</span>
+                            </div>
+                            <ul class="space-y-2 text-slate-300 text-sm list-disc list-inside leading-relaxed">
+                                <li>Managed and analyzed digital datasets using Python and SQL for a US-based technology company.</li>
+                                <li>Maintained data accuracy and reliability across client projects in a fully remote environment.</li>
+                                <li>Supported online marketing campaigns through data-driven performance analysis.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 md:pl-10 group">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-navy-950 border-2 border-slate-600 group-hover:scale-125 transition-transform"></div>
+                        <div class="md:absolute md:-left-40 md:top-1 text-xs font-mono font-bold text-slate-400 mb-2 md:mb-0">
+                            Jul 2021 - Dec 2021
+                        </div>
+
+                        <div class="p-6 rounded-2xl glass-card space-y-3">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                <h3 class="text-xl font-bold text-white">Student Intern</h3>
+                                <span class="text-sm font-semibold text-slate-400">Denning Law School | Karachi, Pakistan</span>
+                            </div>
+                            <ul class="space-y-2 text-slate-300 text-sm list-disc list-inside leading-relaxed">
+                                <li>Maintained administrative data records and prepared operational reports for senior management.</li>
+                                <li>Won 1st Place Ad-Wars Competition for solo analytical marketing campaign.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- TECHNICAL SKILLS SECTION -->
+        <section id="skills" class="py-20 bg-navy-900/40 border-y border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-2">
+                    <h2 class="text-xs font-bold text-cyanAccent uppercase tracking-widest">Technical Competencies</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Skills & Toolkit</p>
+                    <div class="w-12 h-1 bg-cyanAccent mx-auto rounded-full mt-2"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <div class="p-6 rounded-2xl glass-card space-y-4">
+                        <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                            <i class="fa-solid fa-brain text-cyanAccent text-xl"></i>
+                            <h3 class="font-bold text-white">Machine Learning</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2 text-xs font-mono">
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">Scikit-learn</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">XGBoost</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">Random Forest</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">SVM</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">Logistic Regression</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">SMOTE</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">GridSearchCV</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card space-y-4">
+                        <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                            <i class="fa-solid fa-network-wired text-violetAccent text-xl"></i>
+                            <h3 class="font-bold text-white">Deep Learning & XAI</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2 text-xs font-mono">
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">TensorFlow</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">Keras</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">Neural Networks</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">SHAP</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">Ensemble Methods</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card space-y-4">
+                        <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                            <i class="fa-solid fa-chart-column text-emeraldAccent text-xl"></i>
+                            <h3 class="font-bold text-white">Analytics & Code</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2 text-xs font-mono">
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">Python</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">SQL</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">JavaScript</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">Pandas / NumPy</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">Power BI</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">Tableau</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card space-y-4">
+                        <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                            <i class="fa-solid fa-screwdriver-wrench text-amber-400 text-xl"></i>
+                            <h3 class="font-bold text-white">Tools & Cloud</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2 text-xs font-mono">
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">Jupyter</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">Google Colab</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">VS Code</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">Git / GitHub</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">AWS</span>
+                            <span class="px-2.5 py-1 rounded bg-navy-800 text-slate-300 border border-slate-700">GCP</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATIONS & HONORS SECTION -->
+        <section id="achievements" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-2">
+                    <h2 class="text-xs font-bold text-cyanAccent uppercase tracking-widest">Recognitions & Training</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Certifications & Global Forums</p>
+                    <div class="w-12 h-1 bg-cyanAccent mx-auto rounded-full mt-2"></div>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-8">
+                    
+                    <div class="lg:col-span-8 grid sm:grid-cols-2 gap-4">
+                        
+                        <div class="p-4 rounded-xl glass-card flex items-center gap-3">
+                            <i class="fa-solid fa-certificate text-cyanAccent text-xl shrink-0"></i>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Introduction to Artificial Intelligence</h4>
+                                <p class="text-xs text-slate-400">University of Helsinki</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl glass-card flex items-center gap-3">
+                            <i class="fa-solid fa-certificate text-violetAccent text-xl shrink-0"></i>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">AI for Business</h4>
+                                <p class="text-xs text-slate-400">PayPal - Anthropic</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl glass-card flex items-center gap-3">
+                            <i class="fa-solid fa-certificate text-emeraldAccent text-xl shrink-0"></i>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Data Analytics</h4>
+                                <p class="text-xs text-slate-400">Deloitte - Australia</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl glass-card flex items-center gap-3">
+                            <i class="fa-solid fa-certificate text-amber-400 text-xl shrink-0"></i>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Data Science Program</h4>
+                                <p class="text-xs text-slate-400">British Airways</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl glass-card flex items-center gap-3">
+                            <i class="fa-solid fa-certificate text-cyanAccent text-xl shrink-0"></i>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Machine Learning Algorithms</h4>
+                                <p class="text-xs text-slate-400">Cambridge International Qual. (CIQ)</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl glass-card flex items-center gap-3">
+                            <i class="fa-solid fa-certificate text-violetAccent text-xl shrink-0"></i>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Cybersecurity & Ethical Hacking</h4>
+                                <p class="text-xs text-slate-400">ADB Institute / PFTP</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="lg:col-span-4 space-y-4">
+                        <div class="p-6 rounded-2xl glass-card space-y-4 border-l-4 border-l-cyanAccent">
+                            <h4 class="text-lg font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-earth-americas text-cyanAccent"></i> Global Conferences
+                            </h4>
+                            <ul class="space-y-3 text-xs text-slate-300">
+                                <li class="flex items-center justify-between border-b border-slate-800 pb-2">
+                                    <span>Best Diplomats Conference</span>
+                                    <span class="font-mono text-cyanAccent">UAE (2025)</span>
+                                </li>
+                                <li class="flex items-center justify-between border-b border-slate-800 pb-2">
+                                    <span>Global Diplomatic Forum</span>
+                                    <span class="font-mono text-cyanAccent">Brussels (2024)</span>
+                                </li>
+                                <li class="flex items-center justify-between">
+                                    <span>ITCN Asia Tech Expo</span>
+                                    <span class="font-mono text-cyanAccent">Karachi (2023)</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="p-6 rounded-2xl glass-card space-y-2 border-l-4 border-l-amber-400">
+                            <h4 class="text-base font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-trophy text-amber-400"></i> Ad-Wars 1st Place Winner
+                            </h4>
+                            <p class="text-xs text-slate-400">
+                                Won 1st place in solo analytical marketing campaign competition organized by Denning International Foundation.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="py-20 bg-navy-900/40 border-t border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-2">
+                    <h2 class="text-xs font-bold text-cyanAccent uppercase tracking-widest">PhD Opportunities & Research Inquiries</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Get In Touch</p>
+                    <div class="w-12 h-1 bg-cyanAccent mx-auto rounded-full mt-2"></div>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-12">
+                    
+                    <div class="lg:col-span-5 space-y-6">
+                        <h3 class="text-2xl font-bold text-white">Contact Information</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            I am actively seeking PhD opportunities and research collaborations in Machine Learning, Cybersecurity, Explainable AI, and Anomaly Detection.
+                        </p>
+
+                        <div class="space-y-4 pt-2">
+                            <div class="flex items-center gap-4 p-4 rounded-xl glass-card">
+                                <div class="w-12 h-12 rounded-lg bg-cyanAccent/10 text-cyanAccent flex items-center justify-center text-xl shrink-0">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400">Direct Email</p>
+                                    <a href="mailto:azkhan980@gmail.com" class="text-slate-200 font-semibold hover:text-cyanAccent transition-colors">
+                                        azkhan980@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4 p-4 rounded-xl glass-card">
+                                <div class="w-12 h-12 rounded-lg bg-violetAccent/10 text-violetAccent flex items-center justify-center text-xl shrink-0">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400">Phone Contact</p>
+                                    <a href="tel:+13465932552" class="text-slate-200 font-semibold hover:text-violetAccent transition-colors">
+                                        +1 (346) 593-2552
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4 p-4 rounded-xl glass-card">
+                                <div class="w-12 h-12 rounded-lg bg-emeraldAccent/10 text-emeraldAccent flex items-center justify-center text-xl shrink-0">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400">Primary Locations</p>
+                                    <p class="text-slate-200 font-semibold text-xs">Lichfield City, UK & Karachi, Pakistan</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7">
+                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="p-8 rounded-3xl glass-card border border-slate-800 space-y-6">
+                            <div class="grid sm:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label for="name" class="text-xs font-semibold text-slate-300">Your Full Name</label>
+                                    <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl bg-navy-950 border border-slate-700 text-white focus:outline-none focus:border-cyanAccent transition-colors" placeholder="Prof. Jane Doe">
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="email" class="text-xs font-semibold text-slate-300">Your Email Address</label>
+                                    <input type="email" id="email" required class="w-full px-4 py-3 rounded-xl bg-navy-950 border border-slate-700 text-white focus:outline-none focus:border-cyanAccent transition-colors" placeholder="jane.doe@university.edu">
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="subject" class="text-xs font-semibold text-slate-300">Subject</label>
+                                <input type="text" id="subject" required class="w-full px-4 py-3 rounded-xl bg-navy-950 border border-slate-700 text-white focus:outline-none focus:border-cyanAccent transition-colors" placeholder="PhD Research Opportunity / Collaboration">
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="message" class="text-xs font-semibold text-slate-300">Message</label>
+                                <textarea id="message" rows="4" required class="w-full px-4 py-3 rounded-xl bg-navy-950 border border-slate-700 text-white focus:outline-none focus:border-cyanAccent transition-colors" placeholder="Share position details or research inquiry..."></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyanAccent to-violetAccent text-white font-bold hover:opacity-95 transition-all shadow-lg shadow-cyanAccent/20">
+                                Send Message
+                            </button>
+
+                            <div id="form-response" class="hidden p-4 rounded-xl bg-emeraldAccent/10 border border-emeraldAccent/30 text-emeraldAccent text-sm text-center">
+                                Thank you for your message! Azeem will respond promptly.
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-navy-950 border-t border-slate-800 text-center text-xs text-slate-500 font-mono">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; <span id="year"></span> Azeem Ahmed Khan. Designed for Machine Learning & PhD Research.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT LOGIC -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const responseBox = document.getElementById('form-response');
+            const form = document.getElementById('contact-form');
+            responseBox.classList.remove('hidden');
+            form.reset();
+            setTimeout(() => {
+                responseBox.classList.add('hidden');
+            }, 6000);
+        }
+    </script>
+</body>
+</html>
